@@ -3,6 +3,7 @@ package fr.anthonydu77.modmoderation.listeners;
 import com.massivecraft.factions.FPlayer;
 import com.massivecraft.factions.FPlayers;
 import com.massivecraft.factions.Faction;
+import com.massivecraft.factions.struct.ChatMode;
 import com.massivecraft.factions.struct.Relation;
 import fr.anthonydu77.modmoderation.Main;
 import fr.anthonydu77.modmoderation.managers.lang.Lang;
@@ -32,18 +33,26 @@ public class PlayerEvent implements Listener {
             Bukkit.getOnlinePlayers().stream().filter(p -> p.hasPermission(Lang.PERMISSION_MOD.get())).forEach(p -> {
                 p.sendMessage(Lang.STAFF.get() + ChatColor.WHITE + player.getName() + " : " + e.getMessage().substring(1));
             });
+            return;
         }
         if (PlayerManager.isInModerationMod(player)) {
             e.setCancelled(true);
             for (Player players : Bukkit.getOnlinePlayers()) {
                 players.sendMessage(ChatColor.DARK_RED + "Staff" + " §r| " + player.getName() + " >> " + e.getMessage());
             }
+            return;
         }
         if (instace.getSettings().isChat()) {
             if (Main.getInstance().isChatlock()) {
                 e.setCancelled(true);
                 player.sendMessage(Lang.SERVEUR_NAME.get() + Lang.CHATLOCK_ON_PLAYER.get());
             }
+        }
+
+        FPlayer fPlayerx = FPlayers.getInstance().getByPlayer(player);
+        Faction factionx = fPlayerx.getFaction();
+        if (fPlayerx.getChatMode() == ChatMode.ALLIANCE || fPlayerx.getChatMode() == ChatMode.TRUCE || fPlayerx.getChatMode() == ChatMode.FACTION || fPlayerx.getChatMode() == ChatMode.MOD) {
+            return;
         }
 
         e.setCancelled(true);
