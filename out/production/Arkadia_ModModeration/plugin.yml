@@ -1,0 +1,88 @@
+main: fr.anthonydu77.modmoderation.Main
+name: ModModeration
+description: Plugin de Moderation
+author: Anthonydu77
+version: 1.0.2
+softdepend: [SuperVanish, factions]
+#depend: [factions]
+api-version: 1.16
+
+commands:
+  mod:
+    description: Permet de passez en ModModeration !
+    aliases: ModModeration
+    permission: modmoderation.mod
+    #usage: Erreur de syntaxe ! Peut être que vous vouliez /mod ?
+
+  mtp:
+    description: Permet de ce teleporter a un joueur !
+    aliases: modTeleportation
+    permission: modmoderation.mod
+    #usage: Erreur de syntaxe ! Peut être que vous vouliez /mtp <joueur> ?
+
+  mtph:
+    description: Permet de teleporter un joueur a nous !
+    aliases: ModTeleportationHere
+    permission: modmoderation.mod
+    #usage: Erreur de syntaxe ! Peut être que vous vouliez /mtph <joueur> ?
+
+  verif:
+    description: Permet de verif un joueur !
+    aliases: verif
+    permission: modmoderation.mod
+    #usage: Erreur de syntaxe ! Peut être que vous vouliez /mtph <joueur> ?
+
+  lookup:
+    description: Permet de lookup un joueur !
+    aliases: InformationJoueur
+    permission: modmoderation.mod
+    #usage: Erreur de syntaxe ! Peut être que vous vouliez /mtph <joueur> ?
+
+  discord:
+    description: Affiche le discord !
+    #aliases:
+    #permission: modmoderation.mod
+    #usage: Erreur de syntaxe ! Peut être que vous vouliez /mtph <joueur> ?
+
+  clearlag:
+    description: Affiche le lag serveur !
+    aliases: cl
+    permission: modmoderation.clearlag
+    #usage: Erreur de syntaxe ! Peut être que vous vouliez /mtph <joueur> ?
+
+  chatlock:
+    description: Lock le chat !
+    aliases: clock
+    permission: modmoderation.chatlock
+    #usage: Erreur de syntaxe ! Peut être que vous vouliez /mtph <joueur> ?
+
+  ModModerationReload:
+    description: Reload le plugin !
+    aliases: mmrl
+    permission: modmoderation.reload
+    #usage: Erreur de syntaxe ! Peut être que vous vouliez /mtph <joueur> ?
+
+  modlist:
+    description: List du staff en /mod !
+    aliases: modl
+    permission: modmoderation.mod
+    #usage: Erreur de syntaxe ! Peut être que vous vouliez /mtph <joueur> ?
+
+  staffchat:
+    description: StaffChat !
+    aliases: sc
+    permission: modmoderation.staffchat
+    #usage: Erreur de syntaxe ! Peut être que vous vouliez /mtph <joueur> ?
+
+  nightvision:
+    description: Avoir l'effect de potion NightVision !
+    aliases: ngvstop
+    permission: modmoderation.nightvision
+    #usage: Erreur de syntaxe ! Peut être que vous vouliez /mtph <joueur> ?
+
+  gg:
+    description: GamemodeChange !
+    aliases: gamemodechange
+    permission: modmoderation.gamemodechange
+    #usage: Erreur de syntaxe ! Peut être que vous vouliez /mtph <joueur> ?
+

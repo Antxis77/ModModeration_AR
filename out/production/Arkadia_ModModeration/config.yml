@@ -1,0 +1,12 @@
+#
+# ModModeration configuration file
+#
+
+#Messages
+message: false
+period: 300
+join: true
+leave: true
+dead: false
+chat: true
+
