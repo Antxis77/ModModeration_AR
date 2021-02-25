@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Arkadia_ModModeration:jar">
+    <output-path>$PROJECT_DIR$/../../Minecraft/Serveur_Minecraft_Arkadia_ModModeration/plugins</output-path>
+    <root id="archive" name="Arkadia_ModModeration.jar">
+      <element id="module-output" name="Arkadia_ModModeration" />
+    </root>
+  </artifact>
+</component>
