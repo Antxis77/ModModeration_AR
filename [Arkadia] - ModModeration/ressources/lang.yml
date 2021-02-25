@@ -1,0 +1,75 @@
+empty: ' '
+serveur-name: '&2Arkadia &7>> &r'
+serveur-name-console: 'Arkadia >> '
+
+mtp-format: '&cPlease use &7/mtp &r[player]'
+mtph-format: '&cPlease use &7/mtph &r[player]'
+verif-format: '&cPlease use &7/verif &r[player]'
+lookup-format: '&cPlease use &7/lookup &r[player]'
+
+serveur-reload-start: '&c>> Reload start... <<'
+serveur-reload-end: '&c>> Reload end <<'
+
+nightvision-off: '&cNightVision : off'
+nightvision-on: '&aNightVision : on'
+
+list-mod: '&7>> Liste du staff en /mod <<'
+
+staff: '&cStaff >> '
+staff-verif: '&cDemande de verification envoyer a >>'
+staff-discord: '&7https://discord.gg/8nX6ZDwh4m'
+
+mod-to-console: 'Seul un joueur peux executer cette commande !'
+no-permission: '&cVous n''avez pas la permission !'
+
+no-player: '&cCe joueur n''est pas connecté ou n''existe pas !'
+no-player-teleport: '&cIl n''y a aucun joueur sur lequel vous téléporter.'
+
+teleport-succes: '&6Téleportation reussi !'
+
+moderation-mod-on: '&2Vous vennez de passez en ModModeration !'
+moderation-mod-off: '&cVous vennez de quitter le ModModeration !'
+
+chatlock-on-player: '&cLe chat a est desactivée !'
+chatlock-on: '&6Le chat a été re-activée !'
+chatlock-off: '&cLe chat a été desactivée !'
+
+freeze-msg: '&cPasse discord (/discord) dans les 5 prochaines minutes sinon ban !'
+freeze-msg-on-target: '&cVous vennez d''etre FREEZE !'
+freeze-msg-on-mod: '&cVous vennez de FREEZE : '
+freeze-msg-off-target: '&2Vous vennez d''etre UNFREEZE !'
+freeze-msg-off-mod: '&2Vous vennez d''UNFREEZE : '
+
+permission-mod: 'modmoderation.mod'
+permission-mtp: 'modmoderation.mtp'
+permission-mtph: 'modmoderation.mtph'
+permission-verif: 'modmoderation.verif'
+permission-clear-lag: 'modmoderation.clearlag'
+permission-chatlock: 'modmoderation.chatlock'
+permission-nightvision: 'modmoderation.nightvision'
+permission-reload: 'modmoderation.reload'
+permission-lookup: 'modmoderation.lookup'
+permission-staffchat: 'modmoderation.staffchat'
+
+clearlag-preset: '&l[ClearLag] '
+clearlag-preset-info: '&m---&r &6&l[ClearLag] &m---'
+clearlag-preset-ends: '&m------------------'
+
+clearlag-message-info: '/clearlag info : Information sur le serveur !'
+clearlag-message-clear: '/clearlag force : Forcée le suppresion des items au sol !'
+clearlag-clear: 'Suppresion de '
+clearlag-items: ' item(s) !'
+
+clearlag-info-ram-utils: 'Ram utilisée : '
+clearlag-info-ram-dispo: 'Ram disponible : '
+clearlag-info-ram-max: 'Ram maximum : '
+clearlag-info-items: 'Nombres d''item(s) : '
+clearlag-info-ram-units: 'Mb'
+
+player-join-event: '&2[+] {faction} &7| &2{player} a rejoint le serveur !'
+player-leave-event: '&c[-] {faction} &7| &c{player} a quittée le serveur !'
+player-dead-event: '&7Le joueur &f{player} &7est mort !'
+player-kill-event: '&7Le joueur &f{player} &7est mort sous les coups de &f{killer}!'
+player-chat-event: '&2{faction} &7| &r{player} &7>> &r'
+player-enemy-chat-event: '&c{faction} &7| &c{player} &7>> &r'
+player-ally-chat-event: '&d{faction} &7| &d{player} &7>> &r'
