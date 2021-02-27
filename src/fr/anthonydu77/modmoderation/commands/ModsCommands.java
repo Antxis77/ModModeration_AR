@@ -59,6 +59,9 @@ public class ModsCommands implements CommandExecutor , TabCompleter {
                 player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 3.0F, 0.5F);
 
                 Bukkit.dispatchCommand(player, "sv off");
+                FPlayer fPlayers = FPlayers.getInstance().getByPlayer(player);
+                fPlayers.setIsAdminBypassing(false);
+
                 ((Player) sender).removePotionEffect(PotionEffectType.NIGHT_VISION);
 
                 player.sendMessage(Lang.SERVEUR_NAME.get() + Lang.MODERATION_MOD_OFF.get());
@@ -97,6 +100,8 @@ public class ModsCommands implements CommandExecutor , TabCompleter {
             player.getInventory().setItem(8, freeze.toItemStack());
 
             Bukkit.dispatchCommand(player, "sv on");
+            FPlayer fPlayers = FPlayers.getInstance().getByPlayer(player);
+            fPlayers.setIsAdminBypassing(true);
             ((Player) sender).addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 0));
 
             player.sendTitle("§l§c~ §l§fModModeration §l§c~", "On", 20, 20, 20);
