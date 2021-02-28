@@ -13,23 +13,23 @@ public class PlayerManager {
     private Player player;
     private ItemStack[] items = new ItemStack[41];
 
-    public PlayerManager(Player player){
+    public PlayerManager(Player player) {
         this.player = player;
     }
 
-    public void init(){
+    public void init() {
         Main.getInstance().getPlayers().put(player.getUniqueId(), this);
     }
 
-    public void destroy(){
+    public void destroy() {
         Main.getInstance().getPlayers().remove(player.getUniqueId());
     }
 
-    public static PlayerManager getFromPlayer(Player player){
+    public static PlayerManager getFromPlayer(Player player) {
         return Main.getInstance().getPlayers().get(player.getUniqueId());
     }
 
-    public static boolean isInModerationMod(Player player){
+    public static boolean isInModerationMod(Player player) {
         return Main.getInstance().getModerateur().contains(player.getUniqueId());
     }
 
@@ -37,10 +37,10 @@ public class PlayerManager {
         return items;
     }
 
-    public void saveInventoty(){
-        for (int slot = 0; slot < 36; slot++){
+    public void saveInventoty() {
+        for (int slot = 0; slot < 36; slot++) {
             ItemStack item = player.getInventory().getItem(slot);
-            if (item != null){
+            if (item != null) {
                 items[slot] = item;
             }
         }
@@ -54,11 +54,11 @@ public class PlayerManager {
         player.getInventory().clear();
     }
 
-    public void giveInventory(){
+    public void giveInventory() {
         player.getInventory().clear();
-        for (int slot = 0; slot < 36; slot++){
+        for (int slot = 0; slot < 36; slot++) {
             ItemStack item = items[slot];
-            if (item != null){
+            if (item != null) {
                 player.getInventory().setItem(slot, item);
             }
         }

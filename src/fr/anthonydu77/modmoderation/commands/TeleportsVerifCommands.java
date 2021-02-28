@@ -20,7 +20,7 @@ import java.util.List;
  * Created by Anthonydu77 15/12/2020 inside the package - fr.anthonydu77.modmoderation.commands
  */
 
-public class TeleportsVerifCommands implements CommandExecutor , TabCompleter {
+public class TeleportsVerifCommands implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -34,23 +34,23 @@ public class TeleportsVerifCommands implements CommandExecutor , TabCompleter {
 
 
         /* Commande /mtp */
-        if (label.equalsIgnoreCase("mtp")){
+        if (label.equalsIgnoreCase("mtp")) {
             if (!(player.hasPermission(Lang.PERMISSION_MTP.get()))) {
                 player.sendMessage(Lang.SERVEUR_NAME.get() + Lang.NO_PERMISSION.get());
                 return false;
             }
-            if (!PlayerManager.isInModerationMod(player)){
+            if (!PlayerManager.isInModerationMod(player)) {
                 player.sendMessage(Lang.SERVEUR_NAME.get() + Lang.NO_PERMISSION.get());
                 return false;
             }
-            if (args.length != 1){
+            if (args.length != 1) {
                 player.sendMessage(Lang.MTP_FORMAT.get());
                 return false;
             }
 
             String targetName = args[0];
 
-            if(Bukkit.getPlayer(targetName) == null){
+            if (Bukkit.getPlayer(targetName) == null) {
                 player.sendMessage(Lang.NO_PLAYER.get());
                 return false;
             }
@@ -64,23 +64,23 @@ public class TeleportsVerifCommands implements CommandExecutor , TabCompleter {
         }
 
         /* Commande /mtph */
-        if (label.equalsIgnoreCase("mtph")){
+        if (label.equalsIgnoreCase("mtph")) {
             if (!(player.hasPermission(Lang.PERMISSION_MTPH.get()))) {
                 player.sendMessage(Lang.SERVEUR_NAME.get() + Lang.NO_PERMISSION.get());
                 return false;
             }
-            if (!PlayerManager.isInModerationMod(player)){
+            if (!PlayerManager.isInModerationMod(player)) {
                 player.sendMessage(Lang.SERVEUR_NAME.get() + Lang.NO_PERMISSION.get());
                 return false;
             }
-            if (args.length != 1){
+            if (args.length != 1) {
                 player.sendMessage(Lang.MTPH_FORMAT.get());
                 return false;
             }
 
             String targetName = args[0];
 
-            if(Bukkit.getPlayer(targetName) == null){
+            if (Bukkit.getPlayer(targetName) == null) {
                 player.sendMessage(Lang.NO_PLAYER.get());
                 return false;
             }
@@ -93,23 +93,23 @@ public class TeleportsVerifCommands implements CommandExecutor , TabCompleter {
         }
 
         /* Commande /lookup */
-        if (label.equalsIgnoreCase("lookup")){
+        if (label.equalsIgnoreCase("lookup")) {
             if (!(player.hasPermission(Lang.PERMISSION_LOOKUP.get()))) {
                 player.sendMessage(Lang.SERVEUR_NAME.get() + Lang.NO_PERMISSION.get());
                 return false;
             }
-            if (!PlayerManager.isInModerationMod(player)){
+            if (!PlayerManager.isInModerationMod(player)) {
                 player.sendMessage(Lang.SERVEUR_NAME.get() + Lang.NO_PERMISSION.get());
                 return false;
             }
-            if (args.length != 1){
+            if (args.length != 1) {
                 player.sendMessage(Lang.LOOKUP_FORMAT.get());
                 return false;
             }
 
             String targetName = args[0];
 
-            if(Bukkit.getPlayer(targetName) == null){
+            if (Bukkit.getPlayer(targetName) == null) {
                 player.sendMessage(Lang.NO_PLAYER.get());
                 return false;
             }
@@ -129,16 +129,16 @@ public class TeleportsVerifCommands implements CommandExecutor , TabCompleter {
         }
 
         /* Commande /verif */
-        if (label.equalsIgnoreCase("verif")){
+        if (label.equalsIgnoreCase("verif")) {
             if (!(player.hasPermission(Lang.PERMISSION_VERIF.get()))) {
                 player.sendMessage(Lang.SERVEUR_NAME.get() + Lang.NO_PERMISSION.get());
                 return false;
             }
-            if (!PlayerManager.isInModerationMod(player)){
+            if (!PlayerManager.isInModerationMod(player)) {
                 player.sendMessage(Lang.SERVEUR_NAME.get() + Lang.NO_PERMISSION.get());
                 return false;
             }
-            if (args.length != 1){
+            if (args.length != 1) {
                 player.sendMessage(Lang.VERIF_FORMAT.get());
                 return false;
             }
@@ -156,12 +156,12 @@ public class TeleportsVerifCommands implements CommandExecutor , TabCompleter {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
 
-        if (args.length == 1){
+        if (args.length == 1) {
 
             List<String> playerNames = new ArrayList<>();
             Player[] players = new Player[Bukkit.getServer().getOnlinePlayers().size()];
             Bukkit.getServer().getOnlinePlayers().toArray(players);
-            for (int i = 0; i < players.length; i++){
+            for (int i = 0; i < players.length; i++) {
                 playerNames.add(players[i].getName());
             }
             return playerNames;
