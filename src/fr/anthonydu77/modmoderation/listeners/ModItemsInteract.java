@@ -67,11 +67,11 @@ public class ModItemsInteract implements Listener {
              * Freeze
              */
             case PACKED_ICE:
-                if (Main.getInstance().getT() != 0){
+                if (Main.getInstance().getT() != 0) {
                     player.sendMessage(" ");
                     Main.getInstance().setT(0);
                 } else {
-                    if (Main.getInstance().getFreezedPlayers().containsKey(target.getUniqueId())){
+                    if (Main.getInstance().getFreezedPlayers().containsKey(target.getUniqueId())) {
                         Main.getInstance().getFreezedPlayers().remove(target.getUniqueId());
                         target.sendMessage(Lang.FREEZE_MSG_OFF_TARGET.get());
                         player.sendMessage(Lang.FREEZE_MSG_OFF_MOD.get() + target.getName());

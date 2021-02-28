@@ -18,12 +18,12 @@ public class FreezeRunnable extends BukkitRunnable {
 
     @Override
     public void run() {
-        for (UUID uuid : Main.getInstance().getFreezedPlayers().keySet()){
+        for (UUID uuid : Main.getInstance().getFreezedPlayers().keySet()) {
             Player player = Bukkit.getPlayer(uuid);
-            if (player != null){
+            if (player != null) {
                 player.teleport(Main.getInstance().getFreezedPlayers().get(uuid));
                 player.sendTitle("§l§c~ §l§fVerification §l§c~", Lang.FREEZE_MSG.get(), 20, 20, 20);
-                if (Main.getInstance().getT() == 5){
+                if (Main.getInstance().getT() == 5) {
                     t = 0;
                     Main.getInstance().setT(0);
                 }

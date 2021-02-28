@@ -15,7 +15,7 @@ public enum LangValue {
         this.name = name;
     }
 
-    public String toName(){
+    public String toName() {
         return "{" + name + "}";
     }
 }

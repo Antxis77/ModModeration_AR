@@ -17,7 +17,7 @@ import java.util.List;
  * Created by Anthonydu77 15/12/2020 inside the package - fr.anthonydu77.modmoderation.commands
  */
 
-public class ClearLagCommands implements CommandExecutor , TabCompleter {
+public class ClearLagCommands implements CommandExecutor, TabCompleter {
 
     List<String> arguments = new ArrayList<String>();
 
@@ -37,7 +37,7 @@ public class ClearLagCommands implements CommandExecutor , TabCompleter {
                 player.sendMessage(Lang.SERVEUR_NAME.get() + Lang.NO_PERMISSION.get());
                 return false;
             }
-            if (args.length != 1){
+            if (args.length != 1) {
                 sender.sendMessage(Lang.CLEARLAG_PRESET_INFO.get());
                 sender.sendMessage(Lang.EMPTY.get());
                 sender.sendMessage(Lang.CLEARLAG_MESSAGE_INFO.get());
@@ -45,30 +45,30 @@ public class ClearLagCommands implements CommandExecutor , TabCompleter {
                 sender.sendMessage(Lang.EMPTY.get());
                 sender.sendMessage(Lang.CLEARLAG_PRESET_ENDS.get());
             }
-            if(args.length == 1) {
-                if(args[0].equalsIgnoreCase("info")) {
+            if (args.length == 1) {
+                if (args[0].equalsIgnoreCase("info")) {
                     Runtime run = Runtime.getRuntime();
                     List<Entity> entity = player.getWorld().getEntities();
                     int count = 0;
-                    for(Entity current : entity) {
-                        if(current instanceof Item) {
+                    for (Entity current : entity) {
+                        if (current instanceof Item) {
                             count++;
                         }
                     }
                     sender.sendMessage(Lang.CLEARLAG_PRESET_INFO.get());
                     sender.sendMessage(Lang.EMPTY.get());
-                    sender.sendMessage(Lang.CLEARLAG_INFO_RAM_UTILS.get() + ((run.totalMemory() - run.freeMemory()) / 1048576 ) + Lang.CLEARLAG_INFO_RAM_UNITS.get());
+                    sender.sendMessage(Lang.CLEARLAG_INFO_RAM_UTILS.get() + ((run.totalMemory() - run.freeMemory()) / 1048576) + Lang.CLEARLAG_INFO_RAM_UNITS.get());
                     sender.sendMessage(Lang.CLEARLAG_INFO_RAM_DISPO.get() + ((run.maxMemory() / 1048576) - ((run.totalMemory() - run.freeMemory()) / 1048576)) + Lang.CLEARLAG_INFO_RAM_UNITS.get());
-                    sender.sendMessage(Lang.CLEARLAG_INFO_RAM_MAX.get() + (run.maxMemory() / 1048576 ) + Lang.CLEARLAG_INFO_RAM_UNITS.get());
+                    sender.sendMessage(Lang.CLEARLAG_INFO_RAM_MAX.get() + (run.maxMemory() / 1048576) + Lang.CLEARLAG_INFO_RAM_UNITS.get());
                     sender.sendMessage(Lang.CLEARLAG_INFO_ITEMS.get() + count + Lang.CLEARLAG_ITEMS.get());
                     sender.sendMessage(Lang.EMPTY.get());
                     sender.sendMessage(Lang.CLEARLAG_PRESET_ENDS.get());
                 }
-                if(args[0].equalsIgnoreCase("force")) {
+                if (args[0].equalsIgnoreCase("force")) {
                     List<Entity> entity = player.getWorld().getEntities();
                     int count = 0;
-                    for(Entity current : entity) {
-                        if(current instanceof Item) {
+                    for (Entity current : entity) {
+                        if (current instanceof Item) {
                             count++;
                             current.remove();
                         }
@@ -85,14 +85,14 @@ public class ClearLagCommands implements CommandExecutor , TabCompleter {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
 
-        if (arguments.isEmpty()){
+        if (arguments.isEmpty()) {
             arguments.add("info");
             arguments.add("force");
         }
 
         List<String> result = new ArrayList<String>();
-        if (args.length == 1){
-            for (String a : arguments){
+        if (args.length == 1) {
+            for (String a : arguments) {
                 if (a.toLowerCase().startsWith(args[0].toLowerCase()))
                     result.add(a);
             }

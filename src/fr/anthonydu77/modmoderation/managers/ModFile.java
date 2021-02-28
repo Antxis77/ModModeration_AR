@@ -24,16 +24,16 @@ public enum ModFile {
         this.dataFolder = Main.getInstance().getDataFolder();
     }
 
-    public void create(Logger logger){
-        if (fileName == null || fileName.isEmpty()){
+    public void create(Logger logger) {
+        if (fileName == null || fileName.isEmpty()) {
             throw new IllegalArgumentException("RessourcePath cannot be null or empty");
         }
         InputStream in = Main.getInstance().getResource(fileName);
-        if (in == null){
+        if (in == null) {
             throw new IllegalArgumentException("The ressource" + fileName + " cannot be found in the plugin jar");
         }
 
-        if (!dataFolder.exists() && !dataFolder.mkdir()){
+        if (!dataFolder.exists() && !dataFolder.mkdir()) {
             logger.severe("Failed to make directory");
         }
 
@@ -45,31 +45,31 @@ public enum ModFile {
                 byte[] buf = new byte[1024];
                 int n;
 
-                while ((n = in.read(buf)) >= 0){
+                while ((n = in.read(buf)) >= 0) {
                     out.write(buf, 0, n);
                 }
 
                 out.close();
                 in.close();
 
-                if (!outFile.exists()){
+                if (!outFile.exists()) {
                     logger.severe("Unable to copy files");
                 }
             }
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public File getFile(){
+    public File getFile() {
         return new File(dataFolder, fileName);
     }
 
-    public FileConfiguration getConfig(){
+    public FileConfiguration getConfig() {
         return YamlConfiguration.loadConfiguration(getFile());
     }
 
-    public void save(FileConfiguration config){
+    public void save(FileConfiguration config) {
         try {
             config.save(getFile());
         } catch (IOException e) {
