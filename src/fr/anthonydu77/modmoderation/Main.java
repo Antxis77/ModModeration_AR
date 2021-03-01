@@ -50,6 +50,7 @@ public class Main extends JavaPlugin {
         getLogger().info("Starting ModModeration ...");
         getLogger().info("Author : Anthonydu77");
         getLogger().info("If you have any problem contact me at discord : Antho77_#1536");
+
         instance = this;
         registerYamls();
         registerEvents();
@@ -62,7 +63,7 @@ public class Main extends JavaPlugin {
 
     @Override
     public void reloadConfig() {
-        for (Player players : Bukkit.getOnlinePlayers()){
+        for (Player players : Bukkit.getOnlinePlayers()) {
             PlayerManager pm = PlayerManager.getFromPlayer(players);
             if (PlayerManager.isInModerationMod(players)) {
                 Main.getInstance().getModerateur().remove(players.getUniqueId());
@@ -75,8 +76,8 @@ public class Main extends JavaPlugin {
     @Override
     public void onDisable() {
         getLogger().info("ModModeration is shutting off");
-        for (Player players : Bukkit.getOnlinePlayers()){
-            if (!(players == null)){
+        for (Player players : Bukkit.getOnlinePlayers()) {
+            if (!(players == null)) {
                 PlayerManager pm = PlayerManager.getFromPlayer(players);
                 if (PlayerManager.isInModerationMod(players)) {
                     Main.getInstance().getModerateur().remove(players.getUniqueId());
@@ -185,7 +186,7 @@ public class Main extends JavaPlugin {
     }
 
     private void registerRunnables() {
-        if (getSettings().isMessage()){
+        if (getSettings().isMessage()) {
             new AutoMessage().runTaskTimer(this, 10 * 20L, instance.getSettings().getPeriod() * 20L);
         }
         new FreezeRunnable().runTaskTimer(this, 0, 20);

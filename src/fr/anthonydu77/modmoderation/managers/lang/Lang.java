@@ -87,31 +87,32 @@ public enum Lang {
     PLAYER_KILL_EVENT,
     PLAYER_CHAT_EVENT,
     PLAYER_ENEMY_CHAT_EVENT,
+    PLAYER_MEMBER_CHAT_EVENT,
     PLAYER_ALLY_CHAT_EVENT;
 
     private static final Map<Lang, String> VALUES = new HashMap<>();
 
     static {
-        for (Lang lang : values()){
+        for (Lang lang : values()) {
             VALUES.put(lang, lang.getFromFile());
         }
         Main.getInstance().getLogger().info("Lang file read successfuly !");
     }
 
-    public String get(){
-        return  VALUES.get(this);
+    public String get() {
+        return VALUES.get(this);
     }
 
-    public static String getPrefix(){
+    public static String getPrefix() {
         return SERVEUR_NAME.get() + ChatColor.RESET + " ";
     }
 
-    private String getFromFile(){
+    private String getFromFile() {
         FileConfiguration config = ModFile.LANG.getConfig();
         String key = name().toLowerCase().replace('_', '-');
         String value = config.getString(key);
 
-        if (value== null){
+        if (value == null) {
             value = "";
         }
 
