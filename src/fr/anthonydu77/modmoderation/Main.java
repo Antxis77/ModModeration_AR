@@ -50,6 +50,7 @@ public class Main extends JavaPlugin {
         getLogger().info("Starting ModModeration ...");
         getLogger().info("Author : Anthonydu77");
         getLogger().info("If you have any problem contact me at discord : Antho77_#1536");
+
         instance = this;
         registerYamls();
         registerEvents();

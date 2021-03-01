@@ -36,13 +36,6 @@ public class PlayerEvent implements Listener {
                 });
                 return;
             }
-
-            FPlayer fPlayerx = FPlayers.getInstance().getByPlayer(player);
-            Faction factionx = fPlayerx.getFaction();
-            if (fPlayerx.getChatMode() == ChatMode.ALLIANCE || fPlayerx.getChatMode() == ChatMode.TRUCE || fPlayerx.getChatMode() == ChatMode.FACTION || fPlayerx.getChatMode() == ChatMode.MOD) {
-                return;
-            }
-
             if (PlayerManager.isInModerationMod(player)) {
                 e.setCancelled(true);
                 for (Player players : Bukkit.getOnlinePlayers()) {
@@ -50,12 +43,17 @@ public class PlayerEvent implements Listener {
                 }
                 return;
             }
-
             if (Main.getInstance().isChatlock()) {
                 e.setCancelled(true);
                 player.sendMessage(Lang.SERVEUR_NAME.get() + Lang.CHATLOCK_ON_PLAYER.get());
             }
 
+
+            FPlayer fPlayerx = FPlayers.getInstance().getByPlayer(player);
+            Faction factionx = fPlayerx.getFaction();
+            if (fPlayerx.getChatMode() == ChatMode.ALLIANCE || fPlayerx.getChatMode() == ChatMode.TRUCE || fPlayerx.getChatMode() == ChatMode.FACTION || fPlayerx.getChatMode() == ChatMode.MOD) {
+                return;
+            }
 
             e.setCancelled(true);
             for (Player players : Bukkit.getOnlinePlayers()) {
@@ -82,12 +80,16 @@ public class PlayerEvent implements Listener {
                     players.sendMessage(Lang.PLAYER_ENEMY_CHAT_EVENT.get()
                             .replace(LangValue.FACTION.toName(), faction.getTag())
                             .replace(LangValue.PLAYER.toName(), player.getName()) + e.getMessage());
-                } else {
+                } else if (relation.isMember()) {
 
-                    players.sendMessage(Lang.PLAYER_CHAT_EVENT.get()
+                    players.sendMessage(Lang.PLAYER_MEMBER_CHAT_EVENT.get()
                             .replace(LangValue.FACTION.toName(), faction.getTag())
                             .replace(LangValue.PLAYER.toName(), player.getName()) + e.getMessage());
 
+                } else {
+                    players.sendMessage(Lang.PLAYER_CHAT_EVENT.get()
+                            .replace(LangValue.FACTION.toName(), faction.getTag())
+                            .replace(LangValue.PLAYER.toName(), player.getName()) + e.getMessage());
                 }
             }
         }
@@ -156,4 +158,21 @@ public class PlayerEvent implements Listener {
             player.setGameMode(GameMode.SURVIVAL);
         }
     }
+
+    /*@EventHandler
+    public void onSneak(PlayerSwapHandItemsEvent e) {
+        Player player = e.getPlayer();
+        if (PlayerManager.isInModerationMod(player)) {
+            if (e.isAsynchronous()) {
+                if (player.getGameMode().equals(GameMode.SURVIVAL)) {
+                    player.setGameMode(GameMode.SPECTATOR);
+                }
+            }
+            if (e.isCancelled()){
+                if (player.getGameMode().equals(GameMode.SPECTATOR)) {
+                    player.setGameMode(GameMode.SURVIVAL);
+                }
+            }
+        }
+    }*/
 }

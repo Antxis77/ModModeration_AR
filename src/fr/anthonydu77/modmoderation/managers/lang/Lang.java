@@ -87,6 +87,7 @@ public enum Lang {
     PLAYER_KILL_EVENT,
     PLAYER_CHAT_EVENT,
     PLAYER_ENEMY_CHAT_EVENT,
+    PLAYER_MEMBER_CHAT_EVENT,
     PLAYER_ALLY_CHAT_EVENT;
 
     private static final Map<Lang, String> VALUES = new HashMap<>();
