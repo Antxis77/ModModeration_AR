@@ -27,7 +27,7 @@ import java.util.List;
  * Created by Anthonydu77 08/11/2020 inside the package - fr.anthonydu77.modmoderation.commands
  */
 
-public class ModsCommands implements CommandExecutor , TabCompleter {
+public class ModsCommands implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -59,6 +59,9 @@ public class ModsCommands implements CommandExecutor , TabCompleter {
                 player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 3.0F, 0.5F);
 
                 Bukkit.dispatchCommand(player, "sv off");
+                FPlayer fPlayers = FPlayers.getInstance().getByPlayer(player);
+                fPlayers.setIsAdminBypassing(false);
+
                 ((Player) sender).removePotionEffect(PotionEffectType.NIGHT_VISION);
 
                 player.sendMessage(Lang.SERVEUR_NAME.get() + Lang.MODERATION_MOD_OFF.get());
@@ -80,13 +83,13 @@ public class ModsCommands implements CommandExecutor , TabCompleter {
             player.setFlying(true);
             player.setGameMode(GameMode.SURVIVAL);
 
-            ItemBuilder randomtp = new ItemBuilder(Material.COMPASS).setName("§c~ §fRandomTp §c~").setLore(ChatColor.GOLD + "Clique droit", ChatColor.GOLD +"Pour ce téleporter aleatoirement");
-            ItemBuilder information = new ItemBuilder(Material.ENCHANTED_BOOK).setName("§c~ §fInformation §c~").setLore(ChatColor.GOLD + "Clique droit sur un joueur", ChatColor.GOLD +"Pour voir c'est information");
-            ItemBuilder knockback = new ItemBuilder(Material.STICK).setName("§c~ §fKnockBack §c~").setLore(ChatColor.GOLD + "Clique gauche sur un joueur", ChatColor.GOLD +"Pour test c'est kb").addUnsafeEnchantment(Enchantment.KNOCKBACK, 5);
-            ItemBuilder vanish = new ItemBuilder(Material.LIME_DYE).setName("§c~ §fVanish §c~").setLore(ChatColor.GOLD + "Clique droit pour", ChatColor.GOLD +"ce metre en vanish");
-            ItemBuilder invsee = new ItemBuilder(Material.CHEST).setName("§c~ §fInventaire §c~").setLore(ChatColor.GOLD + "Clique droit pour", ChatColor.GOLD +"voir l'inventaire du joueur");
-            ItemBuilder freeze = new ItemBuilder(Material.PACKED_ICE).setName("§c~ §fFreeze §c~").setLore(ChatColor.GOLD + "Clique droit pour", ChatColor.GOLD +"freeze un joueur");
-            ItemBuilder gamemode = new ItemBuilder(Material.CLOCK).setName("§c~ §fGamemode Changeur §c~").setLore(ChatColor.GOLD + "Clique droit pour", ChatColor.GOLD +"chnager de gamemode");
+            ItemBuilder randomtp = new ItemBuilder(Material.COMPASS).setName("§c~ §fRandomTp §c~").setLore(ChatColor.GOLD + "Clique droit", ChatColor.GOLD + "Pour ce téleporter aleatoirement");
+            ItemBuilder information = new ItemBuilder(Material.ENCHANTED_BOOK).setName("§c~ §fInformation §c~").setLore(ChatColor.GOLD + "Clique droit sur un joueur", ChatColor.GOLD + "Pour voir c'est information");
+            ItemBuilder knockback = new ItemBuilder(Material.STICK).setName("§c~ §fKnockBack §c~").setLore(ChatColor.GOLD + "Clique gauche sur un joueur", ChatColor.GOLD + "Pour test c'est kb").addUnsafeEnchantment(Enchantment.KNOCKBACK, 5);
+            ItemBuilder vanish = new ItemBuilder(Material.LIME_DYE).setName("§c~ §fVanish §c~").setLore(ChatColor.GOLD + "Clique droit pour", ChatColor.GOLD + "ce metre en vanish");
+            ItemBuilder invsee = new ItemBuilder(Material.CHEST).setName("§c~ §fInventaire §c~").setLore(ChatColor.GOLD + "Clique droit pour", ChatColor.GOLD + "voir l'inventaire du joueur");
+            ItemBuilder freeze = new ItemBuilder(Material.PACKED_ICE).setName("§c~ §fFreeze §c~").setLore(ChatColor.GOLD + "Clique droit pour", ChatColor.GOLD + "freeze un joueur");
+            ItemBuilder gamemode = new ItemBuilder(Material.CLOCK).setName("§c~ §fGamemode Changeur §c~").setLore(ChatColor.GOLD + "Clique droit pour", ChatColor.GOLD + "chnager de gamemode");
 
             player.getInventory().setItem(0, randomtp.toItemStack());
             player.getInventory().setItem(1, information.toItemStack());
@@ -97,6 +100,8 @@ public class ModsCommands implements CommandExecutor , TabCompleter {
             player.getInventory().setItem(8, freeze.toItemStack());
 
             Bukkit.dispatchCommand(player, "sv on");
+            FPlayer fPlayers = FPlayers.getInstance().getByPlayer(player);
+            fPlayers.setIsAdminBypassing(true);
             ((Player) sender).addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 0));
 
             player.sendTitle("§l§c~ §l§fModModeration §l§c~", "On", 20, 20, 20);

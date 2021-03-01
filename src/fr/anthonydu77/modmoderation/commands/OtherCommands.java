@@ -21,7 +21,7 @@ import java.util.List;
  * Created by Anthonydu77 18/11/2020 inside the package - fr.anthonydu77.modmoderation.commands
  */
 
-public class OtherCommands implements CommandExecutor , TabCompleter {
+public class OtherCommands implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -40,11 +40,6 @@ public class OtherCommands implements CommandExecutor , TabCompleter {
                 return true;
             }
 
-            if (!(sender instanceof Player)) {
-                sender.sendMessage(Lang.SERVEUR_NAME_CONSOLE.get() + Lang.MOD_TO_CONSOLE.get());
-                return false;
-            }
-
             if (player.hasPotionEffect(PotionEffectType.NIGHT_VISION)) {
                 sender.sendMessage(Lang.SERVEUR_NAME.get() + Lang.NIGHTVISION_OFF.get());
                 ((Player) sender).removePotionEffect(PotionEffectType.NIGHT_VISION);
@@ -59,7 +54,7 @@ public class OtherCommands implements CommandExecutor , TabCompleter {
                 player.sendMessage(Lang.SERVEUR_NAME.get() + Lang.NO_PERMISSION.get());
                 return false;
             }
-            if (!PlayerManager.isInModerationMod(player)){
+            if (!PlayerManager.isInModerationMod(player)) {
                 player.sendMessage(Lang.SERVEUR_NAME.get() + Lang.NO_PERMISSION.get());
                 return false;
             }
@@ -75,12 +70,12 @@ public class OtherCommands implements CommandExecutor , TabCompleter {
         }
 
         /* Commande /discord */
-        if (label.equalsIgnoreCase("discord")){
+        if (label.equalsIgnoreCase("discord")) {
             player.sendMessage(Lang.STAFF.get() + Lang.STAFF_DISCORD.get());
         }
 
         /* Commande /ModModerationReload */
-        if (label.equalsIgnoreCase("ModModerationReload")){
+        if (label.equalsIgnoreCase("ModModerationReload")) {
             if (!(player.hasPermission(Lang.PERMISSION_RELOAD.get()))) {
                 player.sendMessage(Lang.SERVEUR_NAME.get() + Lang.NO_PERMISSION.get());
                 return false;
@@ -90,7 +85,7 @@ public class OtherCommands implements CommandExecutor , TabCompleter {
             player.sendMessage(Lang.SERVEUR_RELOAD_END.get());
         }
         /* Commande /staffchat */
-        if (label.equalsIgnoreCase("staffchat")){
+        if (label.equalsIgnoreCase("staffchat")) {
             if (!(player.hasPermission(Lang.PERMISSION_RELOAD.get()))) {
                 player.sendMessage(Lang.SERVEUR_NAME.get() + Lang.NO_PERMISSION.get());
                 return false;
@@ -105,12 +100,12 @@ public class OtherCommands implements CommandExecutor , TabCompleter {
 
 
         /* Commande /chatlock */
-        if (label.equalsIgnoreCase("chatlock")){
+        if (label.equalsIgnoreCase("chatlock")) {
             if (!(player.hasPermission(Lang.PERMISSION_CHATLOCK.get()))) {
                 player.sendMessage(Lang.SERVEUR_NAME.get() + Lang.NO_PERMISSION.get());
                 return false;
             }
-            if (!PlayerManager.isInModerationMod(player)){
+            if (!PlayerManager.isInModerationMod(player)) {
                 player.sendMessage(Lang.SERVEUR_NAME.get() + Lang.NO_PERMISSION.get());
                 return false;
             }
@@ -118,20 +113,20 @@ public class OtherCommands implements CommandExecutor , TabCompleter {
         }
 
         /* Commande /modlist */
-        if (label.equalsIgnoreCase("modlist")){
+        if (label.equalsIgnoreCase("modlist")) {
             if (!(player.hasPermission(Lang.PERMISSION_MOD.get()))) {
                 player.sendMessage(Lang.SERVEUR_NAME.get() + Lang.NO_PERMISSION.get());
                 return false;
             }
             int t = 0;
             player.sendMessage(Lang.LIST_MOD.get());
-            for (Player players : Bukkit.getOnlinePlayers()){
-                if (PlayerManager.isInModerationMod(players)){
+            for (Player players : Bukkit.getOnlinePlayers()) {
+                if (PlayerManager.isInModerationMod(players)) {
                     player.sendMessage(">> " + players.getName());
                     t++;
                 }
             }
-            if (t == 0){
+            if (t == 0) {
                 player.sendMessage(">> Aucun Staff en /mod <<");
             }
 
