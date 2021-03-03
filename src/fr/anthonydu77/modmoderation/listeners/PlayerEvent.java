@@ -29,15 +29,20 @@ public class PlayerEvent implements Listener {
 
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e) {
+        Player player = e.getPlayer();
+        if (e.getMessage().startsWith("!") && player.hasPermission(Lang.PERMISSION_STAFFCHAT.get())) {
+            e.setCancelled(true);
+            Bukkit.getOnlinePlayers().stream().filter(p -> p.hasPermission(Lang.PERMISSION_MOD.get())).forEach(p -> {
+                p.sendMessage(Lang.STAFF.get() + ChatColor.WHITE + player.getName() + " : " + e.getMessage().substring(1));
+            });
+            return;
+        }
+        if (Main.getInstance().isChatlock()) {
+            e.setCancelled(true);
+            player.sendMessage(Lang.SERVEUR_NAME.get() + Lang.CHATLOCK_ON_PLAYER.get());
+        }
+
         if (instace.getSettings().isChat()) {
-            Player player = e.getPlayer();
-            if (e.getMessage().startsWith("!") && player.hasPermission(Lang.PERMISSION_STAFFCHAT.get())) {
-                e.setCancelled(true);
-                Bukkit.getOnlinePlayers().stream().filter(p -> p.hasPermission(Lang.PERMISSION_MOD.get())).forEach(p -> {
-                    p.sendMessage(Lang.STAFF.get() + ChatColor.WHITE + player.getName() + " : " + e.getMessage().substring(1));
-                });
-                return;
-            }
             if (PlayerManager.isInModerationMod(player)) {
                 e.setCancelled(true);
                 for (Player players : Bukkit.getOnlinePlayers()) {
@@ -45,11 +50,6 @@ public class PlayerEvent implements Listener {
                 }
                 return;
             }
-            if (Main.getInstance().isChatlock()) {
-                e.setCancelled(true);
-                player.sendMessage(Lang.SERVEUR_NAME.get() + Lang.CHATLOCK_ON_PLAYER.get());
-            }
-
 
             FPlayer fPlayerx = FPlayers.getInstance().getByPlayer(player);
             Faction factionx = fPlayerx.getFaction();
