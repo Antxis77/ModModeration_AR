@@ -3,8 +3,7 @@ name: ModModeration
 description: Plugin de Moderation
 author: Anthonydu77
 version: 1.0.2
-softdepend: [SuperVanish, factions]
-#depend: [factions]
+softdepend: [ SuperVanish, factions ]
 api-version: 1.16
 
 commands:

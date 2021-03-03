@@ -18,6 +18,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.*;
 
+import java.util.Objects;
+
 /**
  * Created by Anthonydu77 09/11/2020 inside the package - fr.anthonydu77.modmoderation.listeners
  */
@@ -95,14 +97,36 @@ public class PlayerEvent implements Listener {
         }
     }
 
+    @EventHandler
+    public void onTeleport(PlayerTeleportEvent e) throws InterruptedException {
+        Player player = e.getPlayer();
+        // Log cord on teleport from
+        Main.getInstance().getLogger().info(player.getDisplayName() + " teleport from : X=" + e.getFrom().getBlockX() +
+                " Y=" + e.getFrom().getBlockY() + " Z=" + e.getFrom().getBlockZ() + " World" + player.getWorld());
+
+        // Log cord on teleport to
+        Main.getInstance().getLogger().info(player.getDisplayName() + " teleport to : X=" + Objects.requireNonNull(e.getTo()).getBlockX() +
+                " Y=" + e.getTo().getBlockY() + " Z=" + e.getTo().getBlockZ() + " World" + player.getWorld());
+    }
+
+    public void onMove(PlayerLocaleChangeEvent e) {
+        Player player = e.getPlayer();
+
+    }
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         if (instace.getSettings().isJoin()) {
             Player player = e.getPlayer();
+            // Log cord on join
+            Main.getInstance().getLogger().info(player.getName() + " join the game at : X=" + player.getLocation().getBlockX() +
+                    " Y=" +player.getLocation().getBlockY() + " Z=" + player.getLocation().getBlockZ() + " World" + player.getWorld());
+
             FPlayer fPlayer = FPlayers.getInstance().getByPlayer(player);
             Faction faction = fPlayer.getFaction();
             player.setGameMode(GameMode.SURVIVAL);
+            player.setAllowFlight(false);
+            player.setFlying(false);
             player.setHealth(20);
             player.setFoodLevel(20);
             e.setJoinMessage(Lang.PLAYER_JOIN_EVENT.get()
@@ -115,6 +139,10 @@ public class PlayerEvent implements Listener {
     public void onQuit(PlayerQuitEvent e) {
         if (instace.getSettings().isLeave()) {
             Player player = e.getPlayer();
+            // Log cord on left
+            Main.getInstance().getLogger().info(player.getName() + " left the game at : X=" + player.getLocation().getBlockX() +
+                    " Y=" +player.getLocation().getBlockY() + " Z=" + player.getLocation().getBlockZ() + " World" + player.getWorld());
+
             PlayerManager pm = PlayerManager.getFromPlayer(player);
             if (PlayerManager.isInModerationMod(player)) {
                 Main.getInstance().getModerateur().remove(player.getUniqueId());
