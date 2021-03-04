@@ -127,7 +127,6 @@ public class TeleportsVerifCommands implements CommandExecutor, TabCompleter {
             player.sendMessage(ChatColor.GRAY + "Level : " + target.getLevel());
             player.sendMessage(ChatColor.GRAY + "Ip : " + target.getAddress());
 
-            player.sendMessage(Lang.STAFF.get() + Lang.TELEPORT_SUCCES.get());
             Main.getInstance().getLogger().info(player.getName() + " use " + label + " on " + target.getName()); //Log
         }
 

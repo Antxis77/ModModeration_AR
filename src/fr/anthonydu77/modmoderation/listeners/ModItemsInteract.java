@@ -60,7 +60,25 @@ public class ModItemsInteract implements Listener {
              * Voir les informations
              */
             case ENCHANTED_BOOK:
-                player.sendMessage("En Dev");
+                if (Main.getInstance().getT() != 0) {
+                    player.sendMessage(" ");
+                    Main.getInstance().setT(0);
+                } else {
+                    player.sendMessage(Lang.STAFF.get() + target.getDisplayName());
+                    player.sendMessage(ChatColor.GRAY + "UUID : " + target.getUniqueId());
+                    player.sendMessage(ChatColor.GRAY + "Health : " + target.getHealth() + " /20");
+                    player.sendMessage(ChatColor.GRAY + "Location : X=" + player.getLocation().getBlockX() +
+                            " Y=" +player.getLocation().getBlockY() +
+                            " Z=" + player.getLocation().getBlockZ() +
+                            " World" + player.getWorld());
+                    player.sendMessage(ChatColor.GRAY + "Gamemode : " + target.getGameMode());
+                    player.sendMessage(ChatColor.GRAY + "Level : " + target.getLevel());
+                    player.sendMessage(ChatColor.GRAY + "Ip : " + target.getAddress());
+
+                    player.sendMessage(Lang.STAFF.get());
+                    Main.getInstance().getLogger().info(player.getName() + " use lookup on " + target.getName()); //Log
+                }
+
                 break;
 
             /**
