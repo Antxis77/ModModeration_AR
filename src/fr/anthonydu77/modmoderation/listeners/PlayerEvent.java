@@ -98,29 +98,9 @@ public class PlayerEvent implements Listener {
     }
 
     @EventHandler
-    public void onTeleport(PlayerTeleportEvent e) throws InterruptedException {
-        Player player = e.getPlayer();
-        // Log cord on teleport from
-        Main.getInstance().getLogger().info(player.getDisplayName() + " teleport from : X=" + e.getFrom().getBlockX() +
-                " Y=" + e.getFrom().getBlockY() + " Z=" + e.getFrom().getBlockZ() + " World" + player.getWorld());
-
-        // Log cord on teleport to
-        Main.getInstance().getLogger().info(player.getDisplayName() + " teleport to : X=" + Objects.requireNonNull(e.getTo()).getBlockX() +
-                " Y=" + e.getTo().getBlockY() + " Z=" + e.getTo().getBlockZ() + " World" + player.getWorld());
-    }
-
-    public void onMove(PlayerLocaleChangeEvent e) {
-        Player player = e.getPlayer();
-
-    }
-
-    @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         if (instace.getSettings().isJoin()) {
             Player player = e.getPlayer();
-            // Log cord on join
-            Main.getInstance().getLogger().info(player.getName() + " join the game at : X=" + player.getLocation().getBlockX() +
-                    " Y=" +player.getLocation().getBlockY() + " Z=" + player.getLocation().getBlockZ() + " World" + player.getWorld());
 
             FPlayer fPlayer = FPlayers.getInstance().getByPlayer(player);
             Faction faction = fPlayer.getFaction();
@@ -139,9 +119,6 @@ public class PlayerEvent implements Listener {
     public void onQuit(PlayerQuitEvent e) {
         if (instace.getSettings().isLeave()) {
             Player player = e.getPlayer();
-            // Log cord on left
-            Main.getInstance().getLogger().info(player.getName() + " left the game at : X=" + player.getLocation().getBlockX() +
-                    " Y=" +player.getLocation().getBlockY() + " Z=" + player.getLocation().getBlockZ() + " World" + player.getWorld());
 
             PlayerManager pm = PlayerManager.getFromPlayer(player);
             if (PlayerManager.isInModerationMod(player)) {
