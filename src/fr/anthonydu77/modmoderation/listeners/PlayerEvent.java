@@ -18,6 +18,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.*;
 
+import java.util.Objects;
+
 /**
  * Created by Anthonydu77 09/11/2020 inside the package - fr.anthonydu77.modmoderation.listeners
  */
@@ -27,15 +29,20 @@ public class PlayerEvent implements Listener {
 
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e) {
+        Player player = e.getPlayer();
+        if (e.getMessage().startsWith("!") && player.hasPermission(Lang.PERMISSION_STAFFCHAT.get())) {
+            e.setCancelled(true);
+            Bukkit.getOnlinePlayers().stream().filter(p -> p.hasPermission(Lang.PERMISSION_MOD.get())).forEach(p -> {
+                p.sendMessage(Lang.STAFF.get() + ChatColor.WHITE + player.getName() + " : " + e.getMessage().substring(1));
+            });
+            return;
+        }
+        if (Main.getInstance().isChatlock()) {
+            e.setCancelled(true);
+            player.sendMessage(Lang.SERVEUR_NAME.get() + Lang.CHATLOCK_ON_PLAYER.get());
+        }
+
         if (instace.getSettings().isChat()) {
-            Player player = e.getPlayer();
-            if (e.getMessage().startsWith("!") && player.hasPermission(Lang.PERMISSION_STAFFCHAT.get())) {
-                e.setCancelled(true);
-                Bukkit.getOnlinePlayers().stream().filter(p -> p.hasPermission(Lang.PERMISSION_MOD.get())).forEach(p -> {
-                    p.sendMessage(Lang.STAFF.get() + ChatColor.WHITE + player.getName() + " : " + e.getMessage().substring(1));
-                });
-                return;
-            }
             if (PlayerManager.isInModerationMod(player)) {
                 e.setCancelled(true);
                 for (Player players : Bukkit.getOnlinePlayers()) {
@@ -43,11 +50,6 @@ public class PlayerEvent implements Listener {
                 }
                 return;
             }
-            if (Main.getInstance().isChatlock()) {
-                e.setCancelled(true);
-                player.sendMessage(Lang.SERVEUR_NAME.get() + Lang.CHATLOCK_ON_PLAYER.get());
-            }
-
 
             FPlayer fPlayerx = FPlayers.getInstance().getByPlayer(player);
             Faction factionx = fPlayerx.getFaction();
@@ -95,14 +97,16 @@ public class PlayerEvent implements Listener {
         }
     }
 
-
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         if (instace.getSettings().isJoin()) {
             Player player = e.getPlayer();
+
             FPlayer fPlayer = FPlayers.getInstance().getByPlayer(player);
             Faction faction = fPlayer.getFaction();
             player.setGameMode(GameMode.SURVIVAL);
+            player.setAllowFlight(false);
+            player.setFlying(false);
             player.setHealth(20);
             player.setFoodLevel(20);
             e.setJoinMessage(Lang.PLAYER_JOIN_EVENT.get()
@@ -115,6 +119,7 @@ public class PlayerEvent implements Listener {
     public void onQuit(PlayerQuitEvent e) {
         if (instace.getSettings().isLeave()) {
             Player player = e.getPlayer();
+
             PlayerManager pm = PlayerManager.getFromPlayer(player);
             if (PlayerManager.isInModerationMod(player)) {
                 Main.getInstance().getModerateur().remove(player.getUniqueId());

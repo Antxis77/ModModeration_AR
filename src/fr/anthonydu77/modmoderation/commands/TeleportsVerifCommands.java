@@ -119,12 +119,14 @@ public class TeleportsVerifCommands implements CommandExecutor, TabCompleter {
             player.sendMessage(Lang.STAFF.get() + targetName);
             player.sendMessage(ChatColor.GRAY + "UUID : " + target.getUniqueId());
             player.sendMessage(ChatColor.GRAY + "Health : " + target.getHealth() + " /20");
-            player.sendMessage(ChatColor.GRAY + "Location : " + target.getLocation());
+            player.sendMessage(ChatColor.GRAY + "Location : X=" + player.getLocation().getBlockX() +
+                                                        " Y=" +player.getLocation().getBlockY() +
+                                                        " Z=" + player.getLocation().getBlockZ() +
+                                                        " World" + player.getWorld());
             player.sendMessage(ChatColor.GRAY + "Gamemode : " + target.getGameMode());
             player.sendMessage(ChatColor.GRAY + "Level : " + target.getLevel());
             player.sendMessage(ChatColor.GRAY + "Ip : " + target.getAddress());
 
-            player.sendMessage(Lang.STAFF.get() + Lang.TELEPORT_SUCCES.get());
             Main.getInstance().getLogger().info(player.getName() + " use " + label + " on " + target.getName()); //Log
         }
 

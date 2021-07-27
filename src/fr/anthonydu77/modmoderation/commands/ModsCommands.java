@@ -81,7 +81,7 @@ public class ModsCommands implements CommandExecutor, TabCompleter {
             pm.saveInventoty();
             player.setAllowFlight(true);
             player.setFlying(true);
-            player.setGameMode(GameMode.SURVIVAL);
+            player.setGameMode(GameMode.CREATIVE);
 
             ItemBuilder randomtp = new ItemBuilder(Material.COMPASS).setName("§c~ §fRandomTp §c~").setLore(ChatColor.GOLD + "Clique droit", ChatColor.GOLD + "Pour ce téleporter aleatoirement");
             ItemBuilder information = new ItemBuilder(Material.ENCHANTED_BOOK).setName("§c~ §fInformation §c~").setLore(ChatColor.GOLD + "Clique droit sur un joueur", ChatColor.GOLD + "Pour voir c'est information");
@@ -89,12 +89,12 @@ public class ModsCommands implements CommandExecutor, TabCompleter {
             ItemBuilder vanish = new ItemBuilder(Material.LIME_DYE).setName("§c~ §fVanish §c~").setLore(ChatColor.GOLD + "Clique droit pour", ChatColor.GOLD + "ce metre en vanish");
             ItemBuilder invsee = new ItemBuilder(Material.CHEST).setName("§c~ §fInventaire §c~").setLore(ChatColor.GOLD + "Clique droit pour", ChatColor.GOLD + "voir l'inventaire du joueur");
             ItemBuilder freeze = new ItemBuilder(Material.PACKED_ICE).setName("§c~ §fFreeze §c~").setLore(ChatColor.GOLD + "Clique droit pour", ChatColor.GOLD + "freeze un joueur");
-            ItemBuilder gamemode = new ItemBuilder(Material.CLOCK).setName("§c~ §fGamemode Changeur §c~").setLore(ChatColor.GOLD + "Clique droit pour", ChatColor.GOLD + "chnager de gamemode");
+            //ItemBuilder gamemode = new ItemBuilder(Material.CLOCK).setName("§c~ §fGamemode Changeur §c~").setLore(ChatColor.GOLD + "Clique droit pour", ChatColor.GOLD + "chnager de gamemode");
 
             player.getInventory().setItem(0, randomtp.toItemStack());
             player.getInventory().setItem(1, information.toItemStack());
             player.getInventory().setItem(2, knockback.toItemStack());
-            /*player.getInventory().setItem(4, gamemode.toItemStack());*/
+            //player.getInventory().setItem(4, gamemode.toItemStack());
             player.getInventory().setItem(6, vanish.toItemStack());
             player.getInventory().setItem(7, invsee.toItemStack());
             player.getInventory().setItem(8, freeze.toItemStack());
