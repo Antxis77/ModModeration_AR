@@ -1,6 +1,6 @@
 empty: ' '
-serveur-name: '&2Arkadia &7>> &r'
-serveur-name-console: 'Arkadia >> '
+serveur-name: '&2ServerName &7>> &r'
+serveur-name-console: 'ServerName >> '
 
 mtp-format: '&cPlease use &7/mtp &r[player]'
 mtph-format: '&cPlease use &7/mtph &r[player]'
@@ -17,7 +17,7 @@ list-mod: '&7>> Liste du staff en /mod <<'
 
 staff: '&cStaff >> '
 staff-verif: '&cDemande de verification envoyer a >>'
-staff-discord: '&7https://discord.gg/8nX6ZDwh4m'
+staff-discord: 'discord link'
 
 mod-to-console: 'Seul un joueur peux executer cette commande !'
 no-permission: '&cVous n''avez pas la permission !'
