@@ -163,21 +163,4 @@ public class PlayerEvent implements Listener {
             player.setGameMode(GameMode.SURVIVAL);
         }
     }
-
-    /*@EventHandler
-    public void onSneak(PlayerSwapHandItemsEvent e) {
-        Player player = e.getPlayer();
-        if (PlayerManager.isInModerationMod(player)) {
-            if (e.isAsynchronous()) {
-                if (player.getGameMode().equals(GameMode.SURVIVAL)) {
-                    player.setGameMode(GameMode.SPECTATOR);
-                }
-            }
-            if (e.isCancelled()){
-                if (player.getGameMode().equals(GameMode.SPECTATOR)) {
-                    player.setGameMode(GameMode.SURVIVAL);
-                }
-            }
-        }
-    }*/
 }

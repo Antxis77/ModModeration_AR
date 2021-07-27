@@ -7,6 +7,10 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.List;
 
+/**
+ * Created by Anthonydu77 12/11/2020 inside the package - fr.anthonydu77.modmoderation.runnables
+ */
+
 public class AutoMessage extends BukkitRunnable {
 
     private List<String> messages = Main.getInstance().getConfig("messages").getStringList("messages");

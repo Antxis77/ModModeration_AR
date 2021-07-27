@@ -8,11 +8,11 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
+import java.util.Arrays;
+
 /**
  * Created by Anthonydu77 08/11/2020 inside the package - fr.anthonydu77.modmoderation.utils
  */
-
-import java.util.Arrays;
 
 public class ItemBuilder {
     private ItemStack is;
