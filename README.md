@@ -1,7 +1,5 @@
 # Arkadia_ModModeration
-Plugin RedFarmLand pour le serveur RedAndCo
-
-Ce plugin est un mode de jeux dit RedLandFarm
+Plugin ModModeration pour le serveur Arkadia
 
 ----- Config -----
 
