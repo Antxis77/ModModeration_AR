@@ -68,7 +68,7 @@ public class ModItemsInteract implements Listener {
                     player.sendMessage(ChatColor.GRAY + "UUID : " + target.getUniqueId());
                     player.sendMessage(ChatColor.GRAY + "Health : " + target.getHealth() + " /20");
                     player.sendMessage(ChatColor.GRAY + "Location : X=" + player.getLocation().getBlockX() +
-                            " Y=" +player.getLocation().getBlockY() +
+                            " Y=" + player.getLocation().getBlockY() +
                             " Z=" + player.getLocation().getBlockZ() +
                             " World" + player.getWorld());
                     player.sendMessage(ChatColor.GRAY + "Gamemode : " + target.getGameMode());

@@ -26,6 +26,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.*;
+import java.util.logging.Logger;
 
 /**
  * Created by Anthonydu77 08/11/2020 inside the package - fr.anthonydu77.modmoderation
@@ -40,25 +41,38 @@ public class Main extends JavaPlugin {
     private int t;
     private boolean chatlock;
     private Settings settings;
-    private Lang langs;
 
     public static PluginManager pm;
     public static HashMap<Player, Integer> vanishList;
 
+    private static final Logger log = Logger.getLogger("Minecraft");
+
+    public static String getLog_Prefix() {
+        return "[Arkadia] - ";
+    }
+
+    public static Main getInstance() {
+        return instance;
+    }
+
     @Override
     public void onEnable() {
-        getLogger().info("Starting ModModeration ...");
-        getLogger().info("Author : Anthonydu77");
-        getLogger().info("If you have any problem contact me at discord : Antho77_#1536");
+        log.info(getLog_Prefix() + "---------- " + getDescription().getFullName() + " ----------");
+        log.info(getLog_Prefix() + "Starting " + getDescription().getName() + " ...");
+        log.info(getLog_Prefix() + "Author : " + getDescription().getAuthors());
+        log.info(getLog_Prefix() + "Description : " + getDescription().getDescription());
+        log.info(getLog_Prefix() + "Version : " + getDescription().getVersion());
+        log.info(getLog_Prefix() + "If you have any problem contact me at discord : Antho77_#1536");
 
         instance = this;
         registerYamls();
         registerEvents();
         regsiterCommands();
         registerVariables();
-
         registerRunnables();
-        getLogger().info("ModModeration status is ready");
+
+        log.info(getLog_Prefix() + getDescription().getName() + " status is ready");
+        log.info(getLog_Prefix() + "---------- " + getDescription().getFullName() + " ----------");
     }
 
     @Override
@@ -75,7 +89,10 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        getLogger().info("ModModeration is shutting off");
+        log.info(getLog_Prefix() + "---------- " + getDescription().getFullName() + " ----------");
+        log.info(getLog_Prefix() + getDescription().getName() + " is shutting off");
+        log.info(String.format("[%s] Disabled Version %s", getDescription().getName(), getDescription().getVersion()));
+
         for (Player players : Bukkit.getOnlinePlayers()) {
             if (!(players == null)) {
                 PlayerManager pm = PlayerManager.getFromPlayer(players);
@@ -86,11 +103,9 @@ public class Main extends JavaPlugin {
                 }
             }
         }
-        getLogger().info("ModModeration status is off");
-    }
 
-    public static Main getInstance() {
-        return instance;
+        log.info(getLog_Prefix() + getDescription().getName() + " status is off");
+        log.info(getLog_Prefix() + "---------- " + getDescription().getFullName() + " ----------");
     }
 
     private void registerVariables() {
@@ -107,7 +122,8 @@ public class Main extends JavaPlugin {
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new ModItemsInteract(), this);
         pm.registerEvents(new PlayerEvent(), this);
-        getLogger().info("Register Events is done !");
+
+        log.info(getLog_Prefix() + "Register Events is done !");
     }
 
     private void regsiterCommands() {
@@ -145,7 +161,7 @@ public class Main extends JavaPlugin {
         Objects.requireNonNull(getCommand("modmoderationreload")).setExecutor(new OtherCommands());
         Objects.requireNonNull(getCommand("modmoderationreload")).setTabCompleter(new OtherCommands());
 
-        getLogger().info("Register Commands is done !");
+        log.info(getLog_Prefix() + "Register Commands is done !");
     }
 
     private void registerYamls() {
@@ -155,7 +171,7 @@ public class Main extends JavaPlugin {
             final Yaml yaml = new Yaml(new CustomClassLoaderConstructor(getClassLoader()));
             yaml.setBeanAccess(BeanAccess.FIELD);
             //langs = yaml.loadAs(reader, Lang.class);
-            getLogger().info("Lang file read successfully");
+            log.info(getLog_Prefix() + "Lang file read successfully");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -182,7 +198,7 @@ public class Main extends JavaPlugin {
             e.printStackTrace();
         }
 
-        getLogger().info("Register Yaml is done !");
+        log.info(getLog_Prefix() + "Register Yaml is done !");
     }
 
     private void registerRunnables() {
@@ -190,7 +206,8 @@ public class Main extends JavaPlugin {
             new AutoMessage().runTaskTimer(this, 10 * 20L, instance.getSettings().getPeriod() * 20L);
         }
         new FreezeRunnable().runTaskTimer(this, 0, 20);
-        getLogger().info("Register Runnables is done !");
+
+        log.info(getLog_Prefix() + "Register Runnables is done !");
     }
 
     private void createFile(String fileName) {

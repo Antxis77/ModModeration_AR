@@ -18,8 +18,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.*;
 
-import java.util.Objects;
-
 /**
  * Created by Anthonydu77 09/11/2020 inside the package - fr.anthonydu77.modmoderation.listeners
  */

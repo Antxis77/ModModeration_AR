@@ -2,10 +2,7 @@ package fr.anthonydu77.modmoderation.commands;
 
 import fr.anthonydu77.modmoderation.managers.lang.Lang;
 import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
+import org.bukkit.command.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -17,7 +14,7 @@ import java.util.List;
  * Created by Anthonydu77 15/12/2020 inside the package - fr.anthonydu77.modmoderation.commands
  */
 
-public class ClearLagCommands implements CommandExecutor, TabCompleter {
+public class ClearLagCommands implements TabExecutor {
 
     List<String> arguments = new ArrayList<String>();
 

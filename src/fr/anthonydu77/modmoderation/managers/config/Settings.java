@@ -11,10 +11,7 @@ public class Settings {
     private boolean leave;
     private boolean dead;
     private boolean chat;
-    private boolean motd;
-    private boolean maintenance;
     private int period;
-    private int slot;
 
 
     public boolean isMessage() {
@@ -37,19 +34,7 @@ public class Settings {
         return chat;
     }
 
-    public boolean isMotd() {
-        return motd;
-    }
-
-    public boolean isMaintenance() {
-        return maintenance;
-    }
-
     public int getPeriod() {
         return period;
-    }
-
-    public int getSlot() {
-        return slot;
     }
 }

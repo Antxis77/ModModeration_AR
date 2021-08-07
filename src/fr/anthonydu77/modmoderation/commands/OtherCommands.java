@@ -6,10 +6,7 @@ import fr.anthonydu77.modmoderation.managers.lang.Lang;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
+import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -21,7 +18,7 @@ import java.util.List;
  * Created by Anthonydu77 18/11/2020 inside the package - fr.anthonydu77.modmoderation.commands
  */
 
-public class OtherCommands implements CommandExecutor, TabCompleter {
+public class OtherCommands implements TabExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {

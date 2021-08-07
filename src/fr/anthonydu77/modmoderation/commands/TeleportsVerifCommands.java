@@ -5,13 +5,8 @@ import fr.anthonydu77.modmoderation.managers.PlayerManager;
 import fr.anthonydu77.modmoderation.managers.lang.Lang;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
+import org.bukkit.command.*;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +15,7 @@ import java.util.List;
  * Created by Anthonydu77 15/12/2020 inside the package - fr.anthonydu77.modmoderation.commands
  */
 
-public class TeleportsVerifCommands implements CommandExecutor, TabCompleter {
+public class TeleportsVerifCommands implements TabExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -120,9 +115,9 @@ public class TeleportsVerifCommands implements CommandExecutor, TabCompleter {
             player.sendMessage(ChatColor.GRAY + "UUID : " + target.getUniqueId());
             player.sendMessage(ChatColor.GRAY + "Health : " + target.getHealth() + " /20");
             player.sendMessage(ChatColor.GRAY + "Location : X=" + player.getLocation().getBlockX() +
-                                                        " Y=" +player.getLocation().getBlockY() +
-                                                        " Z=" + player.getLocation().getBlockZ() +
-                                                        " World" + player.getWorld());
+                    " Y=" + player.getLocation().getBlockY() +
+                    " Z=" + player.getLocation().getBlockZ() +
+                    " World" + player.getWorld());
             player.sendMessage(ChatColor.GRAY + "Gamemode : " + target.getGameMode());
             player.sendMessage(ChatColor.GRAY + "Level : " + target.getLevel());
             player.sendMessage(ChatColor.GRAY + "Ip : " + target.getAddress());

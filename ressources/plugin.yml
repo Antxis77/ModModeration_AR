@@ -2,7 +2,7 @@ main: fr.anthonydu77.modmoderation.Main
 name: ModModeration
 description: Plugin de Moderation
 author: Anthonydu77
-version: 1.0.2
+version: 1.0.3
 softdepend: [ SuperVanish, factions ]
 api-version: 1.16
 

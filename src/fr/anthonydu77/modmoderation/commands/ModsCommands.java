@@ -9,13 +9,8 @@ import fr.anthonydu77.modmoderation.managers.PlayerManager;
 import fr.anthonydu77.modmoderation.managers.lang.LangValue;
 import fr.anthonydu77.modmoderation.utils.ItemBuilder;
 import org.bukkit.*;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
+import org.bukkit.command.*;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -27,7 +22,7 @@ import java.util.List;
  * Created by Anthonydu77 08/11/2020 inside the package - fr.anthonydu77.modmoderation.commands
  */
 
-public class ModsCommands implements CommandExecutor, TabCompleter {
+public class ModsCommands implements TabExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
