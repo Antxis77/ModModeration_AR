@@ -28,82 +28,133 @@ Les events :
 
 Les commands :
 
-  mod:
+  - mod:
+
     description: Permet de passez en ModModeration !
+    
     aliases: ModModeration
+    
     permission: modmoderation.mod
+    
     #usage: Erreur de syntaxe ! Peut être que vous vouliez /mod ?
 
-  mtp:
+ - mtp:
+
     description: Permet de ce teleporter a un joueur !
+    
     aliases: modTeleportation
+    
     permission: modmoderation.mod
+    
     #usage: Erreur de syntaxe ! Peut être que vous vouliez /mtp <joueur> ?
 
-  mtph:
+ - mtph:
+  
     description: Permet de teleporter un joueur a nous !
+  
     aliases: ModTeleportationHere
+  
     permission: modmoderation.mod
+  
     #usage: Erreur de syntaxe ! Peut être que vous vouliez /mtph <joueur> ?
 
-  verif:
+ - verif:
+  
     description: Permet de verif un joueur !
+  
     aliases: verif
+  
     permission: modmoderation.mod
+  
     #usage: Erreur de syntaxe ! Peut être que vous vouliez /verif <joueur> ?
 
-  lookup:
+ - lookup:
+  
     description: Permet de lookup un joueur !
+  
     aliases: InformationJoueur
+  
     permission: modmoderation.mod
+  
     #usage: Erreur de syntaxe ! Peut être que vous vouliez /lookup <joueur> ?
 
-  discord:
+ - discord:
+  
     description: Affiche le discord !
+  
     #aliases:
+  
     #permission: modmoderation.mod
+  
     #usage: Erreur de syntaxe ! Peut être que vous vouliez /discord ?
 
-  clearlag:
+ - clearlag:
+  
     description: Affiche le lag serveur !
+  
     aliases: cl
+  
     permission: modmoderation.clearlag
+  
     #usage: Erreur de syntaxe ! Peut être que vous vouliez /clearlag ?
 
-  chatlock:
+ - chatlock:
+  
     description: Lock le chat !
+  
     aliases: clock
+  
     permission: modmoderation.chatlock
+  
     #usage: Erreur de syntaxe ! Peut être que vous vouliez /chatlock ?
 
-  ModModerationReload:
+ - ModModerationReload:
+  
     description: Reload le plugin !
+  
     aliases: mmrl
+  
     permission: modmoderation.reload
+  
     #usage: Erreur de syntaxe ! Peut être que vous vouliez /modmoderationreload ?
 
-  modlist:
+ - modlist:
+  
     description: List du staff en /mod !
+  
     aliases: modl
+  
     permission: modmoderation.mod
+  
     #usage: Erreur de syntaxe ! Peut être que vous vouliez /modlist ?
 
-  staffchat:
+ - staffchat:
+  
     description: StaffChat !
+  
     aliases: sc
+  
     permission: modmoderation.staffchat
+  
     #usage: Erreur de syntaxe ! Peut être que vous vouliez /staffchat ?
 
-  nightvision:
+ - nightvision:
+  
     description: Avoir l'effect de potion NightVision !
+  
     aliases: ngvstop
+  
     permission: modmoderation.nightvision
+  
     #usage: Erreur de syntaxe ! Peut être que vous vouliez /nightvision ?
 
-  gg:
+ - gg:
     description: GamemodeChange !
+  
     aliases: gamemodechange
+  
     permission: modmoderation.gamemodechange
+  
     #usage: Erreur de syntaxe ! Peut être que vous vouliez /gg ?
 
 Pour plus d'information : https://docs.google.com/presentation/d/1HE54LacqOPkZGvZRnkme4cIpPmvIW0P__gxJ1WpPxfA/edit?usp=sharing
